@@ -60,3 +60,16 @@ NPM est un gestionnaire de paquets pour les environnements NodeJS. Il permets do
 | `npm install` | Installer et/ou met à jour les dépendances du projet |
 | `npm run dev` | Lance le projet pour tester son travail |
 | `npm run build` | Build le projet sous une forme statique. Utile pour déployer son projet sur un serveur web classique |
+
+---
+
+## Version des dépendances
+
+```json
+"dependencies": {
+  "vue": "^3.5.28"
+}
+```
+
+- `^` : Permet la mise à jour du paquet dans sa dernière micro et sa dernière mineure (`3.5.28` -> `3.5.33`).
+- `~` : **Defaut**. Permet la mise à jour du paquet dans sa dernière micro uniquement (`3.5.28` -> `3.6.0`).
