@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Pokémon</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body>
+        <script type="module"> 
+            import pokemons from './pokemons.json' with {type:'json'};
+            import plants from './plants.json' with {type:'json'};
+
+
+            const pokemon = {
+                data() {
+                    return {
+                        id: 2,
+                        name: "ivysaur",
+                        sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg",
+                    };
+                },
+                template: `
+                <div>
+                    <span>id : {{ id }}</span><br>
+                    <span>nom : {{ name }}</span><br>
+                    <span>sprite : <img v-bind:src="sprite" /></span><br>
+                </div>`,
+            };
+
+            const Card = {
+                props: ['pokemon'],
+                data() {
+                    return {
+                        id: this.pokemon.id,
+                        name: this.pokemon.name,
+                        sprite: this.pokemon.sprite,
+                    }
+                },
+                template: `
+                <div>
+                    <span>id : {{ id }}</span><br>
+                    <span>nom : {{ name }}</span><br>
+                    <span>sprite : <img :src="sprite" /></span><br>
+                    <hr>
+                </div>`,
+            }
+
+            const pokedex = {
+                components: {Card},
+                data() {
+                    return {
+                        pokemons: pokemons,
+                    }
+                },
+                template: `
+                <div>
+                    <h1>Pokédex</h1>
+                    <Card v-for="pokemon in pokemons" :pokemon="pokemon"/>
+                </div>`,
+            };
+            Vue.createApp({components: {pokedex}, template:`<pokedex/>`}).mount('#app');
+        </script>
+        <div id="app">
+
+        </div>
+       
+    </body>
+</html>
