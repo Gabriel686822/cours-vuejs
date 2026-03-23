@@ -221,15 +221,17 @@ function submitEvent() {
 
 ```javascript
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import Button from './MyButton.vue';
 
 const counter = ref(0);
+const double = computed(() => coutner.value * 2);
 function increment() { counter++ };
 </script>
 
 <template><div class="main">
     <Button @onClick="increment"/>
+    <p>{{ double }}</p>
 </div></template>
 
 <style scoped>
