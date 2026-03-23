@@ -8,6 +8,7 @@ defineProps(['todo'])
   <li class="todo-item">
     <h3>{{ todo.title }}</h3>
     <span>{{ todo.status }}</span>
+    <span>{{ todo.description }}</span>
     <TagList :tags="todo.tags"/>
   </li>
 </template>

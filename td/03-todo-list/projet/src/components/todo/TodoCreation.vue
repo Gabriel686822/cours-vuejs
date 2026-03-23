@@ -1,16 +1,32 @@
 <script setup>
 import DesignedButton from '@/components/DesignedButton.vue'
+import {ref} from 'vue';
+
+const emits = defineEmits(['creation']);
 
 function sendTodoEvent(_) {
-  const splittedTags = tags.value.split(', ');
+  const splittedTags = tags.value.split(', '); // ['tag', 'other', ...]
+  const todo = {
+    title:title.value,
+    description:description.value,
+    status:status.value,
+    tags:splittedTags,
+  };
+  emits('creation', todo);
 }
+
+const title = ref('');
+const description = ref('');
+const status = ref('');
+const tags = ref('');
+
 </script>
 
 <template>
   <h2>Créer une tâche</h2>
   <form @submit.prevent="sendTodoEvent">
-    <label>Titre <input name="title"/></label>
-    <label>Description <input name="description"/></label>
+    <label>Titre <input v-model="title" name="title"/></label>
+    <label>Description <input v-model="description" name="description"/></label>
 
     <label>Status
       <select v-model="status">
@@ -21,7 +37,7 @@ function sendTodoEvent(_) {
       </select>
     </label>
 
-    <label>Tags <input type="text" name="tags"/></label>
+    <label>Tags <input type="text" v-model="tags" name="tags"/></label>
 
     <DesignedButton type="submit">Créer</DesignedButton>
   </form>
