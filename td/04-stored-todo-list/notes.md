@@ -2,21 +2,11 @@
 marp: true
 ---
 
-# Travaux pratiques 4 - Stores with Pinia
-
-**Objectif**: Implementer un store Pinia dans un projet existant
+# Travaux pratiques 4 - Vue-router et Pinia
 
 ---
 
-## Exercice 1 - Utilisation unique
+## Vue-router
 
-Prendre un pokémon dans le fichier `pokemons.json` et créer une carte pour présenter le pokémon dans une page html en utilisant son nom et son image.  
-La carte doit être codée sous la forme d'un composant importé par l'application.
-
-```json
-{
-  "id": 2,
-  "name": "ivysaur",
-  "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg"
-}
-```
+1. Analyser la structure et la configuration de vue-router
+2. Brancher la page CreateView à l'adresse '/create'
